@@ -2,6 +2,35 @@
 
 ---
 
+## v2.0.4 — 2026-04-23
+
+- Added AMD GPU support: AMD Radeon RX 5000+ and Intel Arc GPUs now use the Vulkan inference build for hardware-accelerated summaries. GPU detection runs automatically at setup — NVIDIA gets CUDA, AMD/Arc gets Vulkan, everything else gets the optimized CPU build.
+- Vulkan detection uses Windows WMI (no third-party tools required) with explicit exclusions for Intel integrated graphics (Iris Xe, UHD) which offer no meaningful benefit for this workload.
+- Updated system requirements in README to reflect supported hardware matrix across all GPU and CPU paths.
+
+---
+
+## v2.0.3 — 2026-04-23
+
+- Fixed: inference watchdog was too short for CPU-only machines (Intel/AMD, no NVIDIA GPU). GPU builds keep the 5-minute limit; CPU builds now get 15 minutes, which is enough headroom for calls up to ~40 minutes on a mid-range laptop CPU.
+
+---
+
+## v2.0.2 — 2026-04-23
+
+- AI engine now auto-detects GPU at install time: NVIDIA CUDA GPUs get the CUDA 12 build (5–10x faster inference), all other hardware gets the optimized CPU (AVX2) build. No configuration needed.
+- GPU layer offload (`-ngl 99`) is applied automatically when the CUDA build is active; CPU builds run without it.
+- Added KV cache quantization (`q4_0`) — reduces KV cache memory by 4x on both GPU and CPU builds with no meaningful quality impact. A 60-minute call now uses ~1.7 GB for the cache instead of ~6.75 GB.
+
+---
+
+## v2.0.1 — 2026-04-23
+
+- Fixed: AI summary silently fails on longer calls (10+ minutes) due to a hardcoded 4096-token context window that the transcript overflows. Context window now scales dynamically with prompt length so any call length is handled correctly.
+- Fixed: When AI summary generation fails, no error was shown to the user — the button would just stop spinning with no explanation. Failures now surface as a toast message in the transcription view.
+
+---
+
 ## v2.0.0 - 2026-04-19
 
 ### Initial Public Release

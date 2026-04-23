@@ -36,8 +36,34 @@ All AI processing runs locally. No audio, transcript, or summary is ever sent to
 
 ## System Requirements
 
-- **Windows 11** (x64)
-- Approximately 2–4 GB of free disk space for AI models
+**Operating System**
+- Windows 10 x64 or later (Windows 11 recommended)
+
+**CPU**
+- x64 processor with AVX2 support — Intel Core 4th gen (Haswell, 2014) or newer, AMD Ryzen (Zen, 2017) or newer
+- Older CPUs without AVX2 are not supported
+
+**RAM**
+- 12 GB minimum — 16 GB or more recommended
+- 8 GB machines can run the app but may struggle with calls longer than ~10 minutes
+
+**GPU — Optional, but significantly faster AI summaries**
+- The app auto-detects your hardware and downloads the right engine at setup — no manual configuration
+
+| GPU | Backend | Summary speed |
+|---|---|---|
+| NVIDIA GTX 10 series or newer | CUDA 12 | Fastest (~30 sec) |
+| AMD Radeon RX 5000 series or newer | Vulkan | Fast (~1–2 min) |
+| Intel Arc A/B series | Vulkan | Fast (~1–2 min) |
+| Intel Iris Xe / UHD / integrated | CPU | Standard |
+| No GPU | CPU | Standard (~5–10 min) |
+
+> NVIDIA users need driver version 528 or newer (released 2023). Most systems already meet this.
+
+**Disk**
+- 4–5 GB free space for the AI model and inference engine (downloaded automatically on first launch)
+
+**Other**
 - A Google Voice account (free personal or Google Workspace)
 
 ---
