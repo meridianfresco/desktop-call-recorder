@@ -1,0 +1,119 @@
+DESKTOP CALL RECORDER - LICENSE & ATTRIBUTION
+========================================
+
+The following software is a high-fidelity reconstruction and divergent evolution 
+of the original "google-voice-desktop-app" by Jerrod Lankford. 
+
+This version has been entirely re-architected for high-fidelity isolation 
+(WASAPI recording, Parakeet V3 ONNX transcription, and Llama-cpp summarization).
+
+-------------------------------------------------------------------------------
+
+ORIGINAL SOFTWARE ATTRIBUTION
+-----------------------------
+
+Copyright Jerrod Lankford
+
+Permission to use, copy, modify, and/or distribute this software for any purpose 
+with or without fee is hereby granted, provided that the above copyright notice 
+and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH 
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY 
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, 
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM 
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE 
+OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR 
+PERFORMANCE OF THIS SOFTWARE.
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+DESKTOP CALL RECORDER - NON-COMMERCIAL LICENSE
+-------------------------------------------
+
+Copyright (c) 2026 Meridian Fresco
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to use, copy, modify, and distribute the Software for NON-COMMERCIAL purposes ONLY, subject to the following conditions:
+
+1. THE SOFTWARE MAY NOT BE SOLD, RESOLD, LEASED, OR DISTRIBUTED FOR DIRECT COMMERCIAL GAIN. This restriction applies exclusively to the commercialization, licensing, or redistribution of the software for profit, and does not prohibit the use of the software by an individual in the course of their own professional, sales, or business activities.
+2. This license applies exclusively to the proprietary wrapper architecture, recording bridge, and AI summarization components provided in this distribution. This software is a third-party tool and does not grant, imply, or transfer any rights over the services, websites, or intellectual property owned by Google LLC.
+3. The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-------------------------------------------------------------------------------
+
+THIRD-PARTY COMPONENTS
+-----------------------
+
+This software includes or depends on the following third-party components,
+each governed by their own respective licenses:
+
+  Electron
+    License: MIT
+    https://github.com/electron/electron
+
+  llama.cpp (llama-cli.exe, ggml DLLs)
+    License: MIT
+    https://github.com/ggerganov/llama.cpp
+
+  Phi-3.5 Mini Instruct (intelligence.gguf model weights)
+    License: MIT
+    Copyright (c) Microsoft Corporation
+    https://huggingface.co/microsoft/Phi-3.5-mini-instruct
+
+  Parakeet TDT (ONNX model weights)
+    License: Apache 2.0
+    Copyright (c) NVIDIA Corporation
+    https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3
+
+  Sherpa-ONNX (sherpa-onnx npm package)
+    License: Apache 2.0
+    https://github.com/k2-fsa/sherpa-onnx
+
+  fluent-ffmpeg / ffmpeg-static
+    License: MIT / GPL-2.1+ (FFmpeg binary)
+    https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
+    https://ffmpeg.org/legal.html
+
+  electron-store
+    License: MIT
+    https://github.com/sindresorhus/electron-store
+
+  electron-context-menu
+    License: MIT
+    https://github.com/sindresorhus/electron-context-menu
+
+  auto-launch
+    License: MIT
+    https://github.com/Teamwork/node-auto-launch
+
+  sql.js
+    License: MIT
+    https://github.com/sql-js/sql.js
+
+  Google Material Design 3 Web Components (@material/web)
+    License: Apache 2.0
+    https://github.com/material-components/material-web
+
+-------------------------------------------------------------------------------
+
+GOOGLE VOICE NOTICE
+-------------------
+
+This application acts as a desktop wrapper and call recorder for Google Voice,
+a service operated by Google LLC. Use of Google Voice is subject to Google's
+Terms of Service (https://policies.google.com/terms) and the Google Voice
+Terms of Service. This software is not affiliated with, endorsed by, or
+sponsored by Google LLC.
+
+-------------------------------------------------------------------------------
