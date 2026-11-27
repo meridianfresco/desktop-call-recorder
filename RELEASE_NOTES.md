@@ -2,6 +2,22 @@
 
 ---
 
+## v2.0.29 - 2026-11-27
+
+- Fixed: the new-call dot on the tray icon looked like a blocky square at the bottom right. It is now drawn at 16 times the size and scaled down, so it is a smooth red circle with a thin light ring at 16, 24 and 32 px (`icon-tray-notify.png`, `icon-tray-notify@1.5x.png`, `icon-tray-notify@2x.png`).
+- Fixed: after an install or upgrade, the desktop and Start Menu shortcuts and the taskbar button could keep showing the previous version's icon, because Windows keeps icons cached. The installer now tells Windows to refresh its icon cache when it finishes.
+- Changed: the installer no longer contains build-machine file paths. The recorder and transcriber programs are compiled with the build folder's path replaced, and the compiled copy of a file-watching module that only the build tools use (with its build logs) is left out of the package. The installer is about 1.6 MB smaller.
+
+---
+
+## v2.0.28 - 2026-11-27
+
+- Changed: the app icon is Google's current Voice logo (the 2026 version: a green-to-blue handset with the sound-wave quarter), replacing the older two-tone green one. The icon set was regenerated from Google's own renditions at each size where Google publishes one (16, 24, 32, 48, 64 and 128 px) and resampled from the 1024 px original for the rest: `icon-1024.png` and `build/icon.png` (now square, 1024 x 1024), `icon-64.png`, and `icon.ico` (16, 24, 32, 40, 48, 64, 128 and 256 px; the installer, shortcuts and window use it). The tray icons have 1.5x and 2x versions (`icon-tray@1.5x.png`, `icon-tray@2x.png` and the matching `icon-tray-notify` files with the new-call dot), so the tray icon is sharp at 125% to 200% display scaling.
+- Fixed: selected text in the dark and matrix themes is themed. It was the browser's default white on blue; it is now the accent color with the page color as text, and the matrix text glow is not drawn on it.
+- Fixed: the Voice logo at the top left of the dark and matrix themes had a filled box on hover. Voice gives that logo no hover, and the v2.0.26 rule that fills hovered top-bar controls included it. The logo is now left out; the main menu, audio, help, settings, apps and account controls keep their hover and pressed fills.
+
+---
+
 ## v2.0.27 - 2026-11-27
 
 - Fixed: calls were logged with "Connecting…" as the caller name. While a call is being set up, Voice shows that text where the caller's name goes, and the call observer accepted it as the name; the main process then only replaced a name that was exactly "Unknown", so the real name never replaced it. Call-setup text ("Connecting…", "Calling…", "Ringing…") and call-control labels ("Hang up call", "Mute call", "Hold call", ...) are no longer taken as a name; the observer reports the caller's name as soon as Voice shows it, even after the call has connected; and a name read from Voice's own name element replaces one picked up by the last-resort text scan. Calls already stored with such a name (nine rows, all calls to the same number) are repaired at startup: they get the name another call to the same number resolved to, or "Unknown" when there is none; the database is backed up at startup before the repair.
