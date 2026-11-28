@@ -2,6 +2,16 @@
 
 ---
 
+## v2.0.36 - 2026-11-28
+
+- Fixed: the AI engine download for NVIDIA graphics cards used an address that does not exist (the download failed with "404"), and the CUDA build also needs its runtime package, which was never fetched. Both are corrected, so a PC with an NVIDIA card now gets the GPU engine and summaries take seconds instead of minutes (11 s instead of 191 s on the test PC).
+- Fixed: a PC that already had the CPU-only engine (it was installed when graphics-card detection failed) never moved to the GPU engine. A couple of minutes after start-up, and only while no call, recording or AI job is running, the app now replaces a CPU-only engine with the GPU build this PC can run. If the download fails, the engine already installed stays.
+- Fixed: if an AI summary fails on the graphics card (for example not enough free video memory), it is retried once on the CPU instead of failing.
+- Fixed: copying a summary no longer includes the invisible direction marks Voice puts around phone numbers.
+- Fixed: Grab Texts (the text-message export) finished "successfully" but saved no messages at all: every one of the 74 conversations on the test account came out empty. Google Voice renamed the page element that holds a message (`gv-text-message-item` is now `gv-message-item`), so the export found nothing. It now reads both names. The export also marked each empty conversation as done, so a later run skipped it; conversations whose saved file has no messages are now retried automatically, and a conversation with no messages is no longer recorded as up to date. Exported message texts no longer end with a stray comma.
+- Fixed: first-run setup stopped at "Transcription Models" with "tar exited with code 2" on any PC that has Git for Windows installed. Git's own `tar` came first on the search path and cannot read a drive path such as `C:\Users\...`. The app now always uses the `tar.exe` that ships with Windows.
+- Fixed: on some PCs the installer could crash at start-up (an access violation in its elevation check) and install nothing, in about 4 of 10 fresh installs on the test PC. The app installs per user and never needs elevation, so that check was removed (1 crash in 14 afterwards, on the same PC).
+
 ## v2.0.35 - 2026-11-27
 
 - Fixed: with the native (WASAPI) capture engine, a call could end with no recording at all. `recorder.exe` waited for the audio devices to close after the stop signal, which can block forever on some devices: it never exited, the microphone file was left empty, and the call had no MP3. It now finishes and closes both files first and exits straight away.
