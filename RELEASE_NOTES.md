@@ -2,6 +2,10 @@
 
 ---
 
+## v2.0.32 - 2026-11-27
+
+- Changed: Google Voice Dark Mode is now one of the choices in Settings, App Theme ("Google Voice Dark", right under "Google Voice"), and the separate Dark Mode switch is gone. Picking a theme is one setting instead of two that had to be kept in step. If you had Dark Mode switched on, the app moves you to Google Voice Dark the first time it starts, and the look stays the same. Other themes you added are listed after it.
+
 ## v2.0.31 - 2026-11-27
 
 - Fixed: Test Connection and Browse Bucket in Cloud Backup settings always failed (a TLS "handshake failure") when backup was switched off, because the connection was built without the account id. They now work while you are still setting credentials up, and Save & Close only closes when the credentials were actually saved. A TLS "handshake failure" now reads as what it means: Cloudflare does not recognise the Account ID, so check it in the Cloudflare dashboard (R2, Overview).
