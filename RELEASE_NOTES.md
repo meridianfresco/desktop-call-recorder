@@ -2,6 +2,19 @@
 
 ---
 
+## v2.0.35 - 2026-11-27
+
+- Fixed: with the native (WASAPI) capture engine, a call could end with no recording at all. `recorder.exe` waited for the audio devices to close after the stop signal, which can block forever on some devices: it never exited, the microphone file was left empty, and the call had no MP3. It now finishes and closes both files first and exits straight away.
+- Fixed: muting yourself in Voice now also silences the recording when the native (WASAPI) capture engine is used. While a recording runs the app watches Voice's Mute button, remembers the muted stretches, and replaces them with silence in the microphone file when the call ends, before it is mixed or transcribed. (The default Electron engine got the same fix in v2.0.34.)
+
+## v2.0.34 - 2026-11-27
+
+- Fixed: muting yourself in Voice did not mute the recording. The recorder reads your microphone separately from the call, so what you said while muted was still recorded and transcribed. The recording now goes silent while Voice's Mute button is on, and picks up again when you unmute. (This applies to the default capture engine, Electron.)
+
+## v2.0.33 - 2026-11-27
+
+- Fixed (themes): Voice's pop-up boxes, such as "You can't make a call without a working microphone", had no edge in Google Voice Dark and Matrix: a dark card on a dark page just blended in. They now have a thin outline in the theme's accent color that follows the rounded corners. Google's own light look is unchanged.
+
 ## v2.0.32 - 2026-11-27
 
 - Changed: Google Voice Dark Mode is now one of the choices in Settings, App Theme ("Google Voice Dark", right under "Google Voice"), and the separate Dark Mode switch is gone. Picking a theme is one setting instead of two that had to be kept in step. If you had Dark Mode switched on, the app moves you to Google Voice Dark the first time it starts, and the look stays the same. Other themes you added are listed after it.
