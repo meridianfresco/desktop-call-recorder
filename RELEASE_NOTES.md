@@ -2,6 +2,30 @@
 
 ---
 
+## v2.0.31 - 2026-11-27
+
+- Fixed: Test Connection and Browse Bucket in Cloud Backup settings always failed (a TLS "handshake failure") when backup was switched off, because the connection was built without the account id. They now work while you are still setting credentials up, and Save & Close only closes when the credentials were actually saved. A TLS "handshake failure" now reads as what it means: Cloudflare does not recognise the Account ID, so check it in the Cloudflare dashboard (R2, Overview).
+- Fixed (themes): in the New message screen the recipient chip was a solid block with unreadable text and "Anyone else?" was a square dark box. The chip is now an outlined pill, the field is plain, and the suggestions list is a raised rounded card, like Google Voice, in Matrix and Dark Mode. The chip's remove (x) button no longer sits on a dark square that covered the end of the name (it shows a soft round highlight on hover), and the suggestions card keeps its rounded corners with the scrollbar inside it instead of a black strip down its right edge.
+- Fixed: re-transcribing a call no longer erases its transcript first. The old transcript is kept until the new one succeeds, the window always leaves the "reprocessing" state, and a missing recording is reported instead of wiping the text. A hung or crashed transcription engine no longer blocks every later transcription, and long calls get a timeout that scales with their length.
+- Fixed: Purge Call Logs no longer deletes your exported text-message archive.
+- Fixed: the text export no longer stops on the first conversation without photos, and always re-enables its Start button.
+- Fixed: caller names, numbers and AI summary text are now escaped everywhere they are shown (Call History, Summary, Transcription, Cloud Browser, the export log), and the export can only write files inside its own archive folder.
+- Fixed: AI Summarize / Regenerate buttons no longer stay locked when a request is declined (call too short, queue full, already queued), two queued summaries no longer leave a row on "Processing...", and Sync All and per-row cloud upload no longer get stuck after a failed or declined upload.
+- Fixed: cloud sync only marks a call as synced once its audio is really uploaded, stops retrying a rejected login after the first failure, and gives large recordings enough time to upload. A folder mirror that uploaded nothing no longer reports success.
+- Fixed: the AI model and engine downloads resume from a partial file, are verified before use, are capped instead of retrying forever, and no longer delete a working engine before its replacement is ready. GPU detection works on Windows versions without wmic.
+- Fixed: a database save that fails is retried, a damaged database is set aside and the newest backup restored, and the start-up cleanup of "Connecting..." placeholder names no longer renames real contacts.
+- Fixed: the recorder process is handled if it cannot start or dies mid-call, a database error at the end of a call no longer leaves the recorder running, closing or quitting the app cleans up its helper processes, gv-dial: links open the dialer, and a page redirect can no longer close the main window.
+
+## v2.0.30 - 2026-11-27
+
+- Changed: a theme is now one small file. The App Theme list is built from the files in `src/themes`, and Matrix and Google Voice Dark Mode are just a palette each on top of one shared set of rules. A new theme is a copy of `src/themes/_template.scss` with different colors, and it shows up in Settings by itself (see `src/themes/README.md`). The look of Matrix and Dark Mode is unchanged by this.
+- Fixed (dark and Matrix themes): messages you send and messages you receive looked the same. Sent messages are now tinted with the theme's accent, the way Google Voice tints them, in both themes.
+- Fixed (dark theme): the dialpad numbers were accent blue; they are now the normal text color with the letters underneath in the dimmer secondary color, as in Google Voice. The same dimmer letters now apply in Matrix.
+- Fixed: the window and curtain color before a page paints is now the theme's own background (the dark theme's #0D1117, for example) instead of plain black.
+- Fixed: switching on Google Voice Dark Mode while another theme is selected now returns to the Google Voice theme with a single reload, and choosing any other theme turns Dark Mode off. The settings page keeps the switch in step.
+
+---
+
 ## v2.0.29 - 2026-11-27
 
 - Fixed: the new-call dot on the tray icon looked like a blocky square at the bottom right. It is now drawn at 16 times the size and scaled down, so it is a smooth red circle with a thin light ring at 16, 24 and 32 px (`icon-tray-notify.png`, `icon-tray-notify@1.5x.png`, `icon-tray-notify@2x.png`).
